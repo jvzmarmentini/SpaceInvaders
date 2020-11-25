@@ -4,8 +4,7 @@ import javafx.scene.paint.Paint;
 
 /**
  * Represents the game Gun
- * 
- * @author Bernardo Copstein, Rafael Copstein
+ * @author Gabriel Panho, Gabriel Verdi e João Marmentini
  */
 public class Canhao extends BasicElement implements KeyboardCtrl {
     private final int RELOAD_TIME = 500000000; // Time is in nanoseconds
@@ -43,7 +42,7 @@ public class Canhao extends BasicElement implements KeyboardCtrl {
         }
         if (keyCode == KeyCode.SPACE) {
             if (shot_timer <= 0) {
-                Game.getInstance().addChar(new Shot(getX() + 16, getY() - 32, -1));
+                Game.getInstance().addChar(new GunShot(getX() + 16, getY() - 32));
                 shot_timer = RELOAD_TIME;
             }
         }

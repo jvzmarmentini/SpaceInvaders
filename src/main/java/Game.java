@@ -5,7 +5,7 @@ import java.util.LinkedList;
 
 /**
  * Handles the game lifecycle and behavior
- * @author Bernardo Copstein and Rafael Copstein
+ * @author Gabriel Panho, Gabriel Verdi e João Marmentini
  */
 public class Game {
     private static Game game = null;
@@ -60,13 +60,14 @@ public class Game {
         activeChars.add(canhao);
 
         // Adiciona bolas
-        for(int i=0; i<5; i++){
-            activeChars.add(new AngryBall(100+(i*60),60));
-        }
+        // for(int i=0; i<5; i++){
+        //     activeChars.add(new AngryAlien(100+(i*60),60));
+        // }
+        activeChars.add(new DrunkAlien(100, 60));
 
         // Adiciona pinguim
         //activeChars.add(new Pinguim(100, 270));
-        activeChars.add(new Pinguim(10,300));
+        // activeChars.add(new Pinguim(10,300));
 
         //activeChars.add(new AngryBall(150, 250));
         

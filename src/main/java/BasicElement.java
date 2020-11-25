@@ -2,7 +2,7 @@ import javafx.scene.canvas.GraphicsContext;
 
 /**
  * Represents the basic game character
- * @author Bernardo Copstein and Rafael Copstein
+ * @author Gabriel Panho, Gabriel Verdi e João Marmentini
  */
 public abstract class BasicElement implements Character{
     int direction_horizontal = 0, direction_vertical = 0;
@@ -135,8 +135,8 @@ public abstract class BasicElement implements Character{
     }
 
     @Override
-    public void setColidiu(){
-        colidiu = true;
+    public void setColidiu(boolean b){
+        colidiu = b;
     }
 
     @Override

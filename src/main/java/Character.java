@@ -2,7 +2,7 @@ import javafx.scene.canvas.GraphicsContext;
 
 /**
  * Represents the basic game character
- * @author Bernardo Copstein and Rafael Copstein
+ * @author Gabriel Panho, Gabriel Verdi e João Marmentini
  */
 public interface Character {
     int getX();
@@ -12,7 +12,7 @@ public interface Character {
 
     void testaColisao(Character c);
     boolean jaColidiu();
-    void setColidiu();
+    void setColidiu(boolean b);
 
     void start();
     boolean isActive();

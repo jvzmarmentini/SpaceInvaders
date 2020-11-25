@@ -3,22 +3,18 @@ import javafx.scene.paint.Paint;
 
 /**
  * Represents a shot that crosses the screen from bottom to up and then dismiss
- * 
- * @author Bernardo Copstein and Rafael Copstein
+ * @author Gabriel Panho, Gabriel Verdi e João Marmentini
  */
-public class Shot extends BasicElement {
-    private int direction;
+public abstract class Shot extends BasicElement {
+    String hexColor;
 
-    public Shot(int px, int py, int direction) {
+    public Shot(int px, int py, String hexColor) {
         super(px, py);
-        this.direction = direction;
+        // this.hexColor = hexColor;
     }
 
     @Override
-    public void start() {
-        setDirV(direction);
-        setSpeed(3);
-    }
+    public abstract void start();
 
     @Override
     public void Update(long deltaTime) {
@@ -44,8 +40,10 @@ public class Shot extends BasicElement {
         return 8;
     }
 
+    @Override
     public void Draw(GraphicsContext graphicsContext) {
-        graphicsContext.setFill(Paint.valueOf("#00FF00"));
+        //FIXME: quando um inimigo dispara, a cor do tiro sai diferente do que deveria
         graphicsContext.fillOval(getX(), getY(), 8, 16);
+        graphicsContext.setFill(Paint.valueOf(hexColor));
     }
 }
