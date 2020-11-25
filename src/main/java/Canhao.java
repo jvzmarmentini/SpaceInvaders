@@ -8,7 +8,7 @@ import javafx.scene.paint.Paint;
  * @author Bernardo Copstein, Rafael Copstein
  */
 public class Canhao extends BasicElement implements KeyboardCtrl {
-    private final int RELOAD_TIME = 1000000000; // Time is in nanoseconds
+    private final int RELOAD_TIME = 500000000; // Time is in nanoseconds
     private int shot_timer = 0;
 
     public Canhao(int px, int py) {

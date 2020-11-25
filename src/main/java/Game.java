@@ -65,8 +65,12 @@ public class Game {
         }
 
         // Adiciona pinguim
-        // activeChars.add(new Pinguim(100, 270));
-        // activeChars.add(new Pinguim(10,300));
+        //activeChars.add(new Pinguim(100, 270));
+        activeChars.add(new Pinguim(10,300));
+
+        //activeChars.add(new AngryBall(150, 250));
+        
+
 
         for(Character c:activeChars){
             c.start();
@@ -74,7 +78,7 @@ public class Game {
     }
 
     public void Update(long currentTime, long deltaTime) {
-        if (gameOver){
+        if(gameOver){
             return;
         }
 
@@ -89,6 +93,7 @@ public class Game {
             }
         }
     }
+
 
     public void OnInput(KeyCode keyCode, boolean isPressed) {
         canhao.OnInput(keyCode, isPressed);
