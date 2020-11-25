@@ -2,7 +2,7 @@ import javafx.scene.input.KeyCode;
 
 /**
  * Represents the basic game character
- * @author Bernardo Copstein and Rafael Copstein
+ * @author Gabriel Panho, Gabriel Verdi e João Marmentini
  */
 public interface KeyboardCtrl {
     void OnInput(KeyCode keyCode, boolean isPressed);

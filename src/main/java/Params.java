@@ -22,4 +22,8 @@ public class Params {
     public int nextInt(int lim){
         return(rnd.nextInt(lim));
     }
+
+    public boolean coinFlip(){
+        return(rnd.nextBoolean());
+    }
 }

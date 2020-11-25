@@ -1,4 +1,4 @@
-import java.awt.Color;
+// import java.awt.Color;
 
 import javafx.animation.AnimationTimer;
 import javafx.application.Application;
@@ -13,7 +13,7 @@ import javafx.stage.Stage;
 
 /**
  * Handles window initialization and primary game setup
- * @author Bernardo Copstein, Rafael Copstein
+ * @author Gabriel Panho, Gabriel Verdi e João Marmentini
  */
 
 public class Main extends Application {
