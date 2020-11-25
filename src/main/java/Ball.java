@@ -1,5 +1,4 @@
 import javafx.scene.canvas.GraphicsContext;
-import javafx.scene.paint.Paint;
 
 /**
  * Represents a simple ball that crosses the screen over and over again
