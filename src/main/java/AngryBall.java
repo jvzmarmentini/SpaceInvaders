@@ -13,7 +13,7 @@ public class AngryBall extends Ball {
         try{
             // Carrega a imagem ajustando a altura para 40 pixels
             // mantendo a proporção em ambas dimensões
-            image =  new Image("alien.png",0,40,true,true);
+            image =  new Image("alien.png",0,30,true,true);
         }catch(Exception e){
             System.out.println(e.getMessage());
             System.exit(1);

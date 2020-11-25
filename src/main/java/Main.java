@@ -1,3 +1,5 @@
+import java.awt.Color;
+
 import javafx.animation.AnimationTimer;
 import javafx.application.Application;
 import javafx.scene.Group;
@@ -22,7 +24,7 @@ public class Main extends Application {
         stage.setResizable(false);
 
         Group root = new Group();
-        Scene scene = new Scene( root );
+        Scene scene = new Scene(root);
         stage.setScene( scene );
 
         Canvas canvas = new Canvas(Params.WINDOW_WIDTH, Params.WINDOW_HEIGHT );
@@ -52,7 +54,7 @@ public class Main extends Application {
             public void handle(long currentNanoTime)
             {
                 long deltaTime = currentNanoTime - lastNanoTime;
-                
+
                 Game.getInstance().Update(currentNanoTime, deltaTime);
                 gc.clearRect(0, 0, Params.WINDOW_WIDTH, Params.WINDOW_HEIGHT);
                 gc.fillText("Pontos: "+Game.getInstance().getPontos(), 10, 10);

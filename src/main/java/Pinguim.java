@@ -1,7 +1,7 @@
 import javafx.scene.canvas.GraphicsContext;
 import javafx.scene.image.Image;
 
-public class Pinguim extends BasicElement {
+public class Pinguim extends Enemy {
     private Image image;
 
     public Pinguim(int px,int py){

@@ -4,7 +4,7 @@ import javafx.scene.canvas.GraphicsContext;
  * Represents a simple ball that crosses the screen over and over again
  * @author Bernardo Copstein and Rafael Copstein
  */
-public abstract class Ball extends BasicElement {
+public abstract class Ball extends Enemy {
     public Ball(int px,int py){
         super(px,py);
     }
