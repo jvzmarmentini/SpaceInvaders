@@ -4,7 +4,7 @@
  * @author Gabriel Panho, Gabriel Verdi e João Marmentini
  */
 public class DrunkAlien extends Alien {
-    private final int RELOAD_TIME = 1000000000;
+    private final int REST_TIME = 1000000000;
     private int stamina = 0;
 
     public DrunkAlien(int px, int py) {
@@ -24,7 +24,7 @@ public class DrunkAlien extends Alien {
                 if (Params.getInstance().nextInt(3) == 0)
                     setDirH(getDirH() * -1);
                     setSpeed(Params.getInstance().nextInt(3) + 1);
-                stamina = RELOAD_TIME;
+                stamina = REST_TIME;
             }
             if (getX() >= getLMaxH() || getX() < getLMinH()) {
                 setDirH(getDirH() * -1);

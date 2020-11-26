@@ -1,6 +1,6 @@
 TODO list:
- - criar o quarto inimigo (groupAlien)
+ - [0] criar o quarto inimigo (groupAlien)
   - esse "alien" é na verdade um conjunto de aliens que se movem em grupo. ou seja, qnd um chega na borda, todos "se viram". lembrando q essa e so uma ideia e em aula ele falou q nao e necessario desenvolver um inimigo assim.
- - corrigir cor do disparo (ta zoado)
- - achar uma alternativa para os aliens não se matarem quando colidirem.
- - achar uma alterantiva para os disparos dos aliens raivosos não matarem os outros aliens
+ - [0] corrigir cor do disparo (ta zoado)
+ - [x] achar uma alternativa para os aliens não se matarem quando colidirem.
+ - [x] achar uma alterantiva para os disparos dos aliens raivosos não matarem os outros aliens
