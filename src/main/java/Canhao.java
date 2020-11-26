@@ -1,6 +1,8 @@
 import javafx.scene.canvas.GraphicsContext;
 import javafx.scene.input.KeyCode;
 import javafx.scene.paint.Paint;
+import javafx.scene.image.Image;
+
 
 /**
  * Represents the game Gun
@@ -9,6 +11,7 @@ import javafx.scene.paint.Paint;
 public class Canhao extends BasicElement implements KeyboardCtrl {
     private final int RELOAD_TIME = 500000000; // Time is in nanoseconds
     private int shot_timer = 0;
+    private Image image = new Image("ship.png", 45, 60,false, true);
 
     public Canhao(int px, int py) {
         super(px, py);
@@ -61,8 +64,10 @@ public class Canhao extends BasicElement implements KeyboardCtrl {
 
     @Override
     public void Draw(GraphicsContext graphicsContext) {
-        graphicsContext.setFill(Paint.valueOf("#FF0000"));
+        graphicsContext.drawImage(image, getX(),getY());
+
+       /*  graphicsContext.setFill(Paint.valueOf("#FF0000"));
         graphicsContext.fillRect(getX(), getY() + 16, 32, 32);
-        graphicsContext.fillRect(getX() + 8, getY() - 16, 16, 48);
+        graphicsContext.fillRect(getX() + 8, getY() - 16, 16, 48); */
     }
 }
