@@ -5,7 +5,7 @@ import javafx.scene.image.Image;
  * Represents a simple alien that crosses the screen over and go back
  * @author Gabriel Panho, Gabriel Verdi e João Marmentini
  */
-public abstract class Alien extends BasicElement {
+public class Alien extends BasicElement {
     private Image image;
     
     public Alien(int px,int py,String imagePath){
@@ -32,13 +32,9 @@ public abstract class Alien extends BasicElement {
             deactivate();
         }else{
             setPosX(getX() + getDirH() * getSpeed());
-            // Se chegou no lado direito da tela ...
             if (getX() >= getLMaxH() || getX() < getLMinH()){
-                // Reposiciona no lado esquerdo e ...
                 setDirH(getDirH()*-1);
                 setPosY(getY()+35);
-                // Sorteia o passo de avanço [1,5]
-                // setSpeed(Params.getInstance().nextInt(5)+1);
             }
         }
     }

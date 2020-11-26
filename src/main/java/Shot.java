@@ -6,11 +6,9 @@ import javafx.scene.paint.Paint;
  * @author Gabriel Panho, Gabriel Verdi e João Marmentini
  */
 public abstract class Shot extends BasicElement {
-    String hexColor;
 
-    public Shot(int px, int py, String hexColor) {
+    public Shot(int px, int py) {
         super(px, py);
-        // this.hexColor = hexColor;
     }
 
     @Override
@@ -22,9 +20,7 @@ public abstract class Shot extends BasicElement {
             deactivate();
         } else {
             setPosY(getY() + getDirV() * getSpeed());
-            // Se chegou na parte superior da tela ...
             if (getY() <= getLMinV()) {
-                // Desaparece
                 deactivate();
             }
         }
@@ -41,9 +37,7 @@ public abstract class Shot extends BasicElement {
     }
 
     @Override
-    public void Draw(GraphicsContext graphicsContext) {
-        //FIXME: quando um inimigo dispara, a cor do tiro sai diferente do que deveria
-        graphicsContext.fillOval(getX(), getY(), 8, 16);
-        graphicsContext.setFill(Paint.valueOf(hexColor));
+    public void Draw(GraphicsContext graphicsContext){
+        graphicsContext.fillOval(getX(), getY(), 4, 12);
     }
 }

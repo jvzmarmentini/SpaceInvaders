@@ -23,6 +23,7 @@ public class Canhao extends BasicElement implements KeyboardCtrl {
     @Override
     public void Update(long deltaTime) {
         if (jaColidiu()) {
+            System.out.println("dead");
             Game.getInstance().setGameOver();
         }
         setPosX(getX() + getDirH() * getSpeed());

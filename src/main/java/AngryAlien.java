@@ -3,7 +3,7 @@
  * @author Gabriel Panho, Gabriel Verdi e João Marmentini
  */
 public class AngryAlien extends Alien {
-    private final int RELOAD_TIME = 1000000000;
+    private final static int RELOAD_TIME = 1000000000;
     private int shot_timer = 0;
 
     public AngryAlien(int px, int py) {

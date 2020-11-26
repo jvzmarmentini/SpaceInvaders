@@ -63,15 +63,15 @@ public class Game {
         // for(int i=0; i<5; i++){
         //     activeChars.add(new AngryAlien(100+(i*60),60));
         // }
-        activeChars.add(new DrunkAlien(100, 60));
+        // activeChars.add(new DrunkAlien(100, 60));
+
+        activeChars.add(new InvokerAlien(100, 60));
 
         // Adiciona pinguim
         //activeChars.add(new Pinguim(100, 270));
         // activeChars.add(new Pinguim(10,300));
 
         //activeChars.add(new AngryBall(150, 250));
-        
-
 
         for(Character c:activeChars){
             c.start();
@@ -88,8 +88,18 @@ public class Game {
             este.Update(deltaTime);
             for(int j =0; j<activeChars.size();j++){
                 Character outro = activeChars.get(j);
-                if (este != outro){
-                    este.testaColisao(outro);
+                //FIXME: make these ifs prettier
+                if (este instanceof AlienShot) {
+                    if (outro instanceof Canhao) {
+                        este.testaColisao(outro);
+                        outro.testaColisao(este);
+                    }
+                }
+                if (este instanceof GunShot) {
+                    if (outro instanceof Alien) {
+                        este.testaColisao(outro);
+                        outro.testaColisao(este);
+                    }
                 }
             }
         }
