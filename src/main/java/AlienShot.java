@@ -12,6 +12,10 @@ public class AlienShot extends Shot {
         super(px, py);
     }
 
+    public AlienShot(int px, int py, boolean rnd_color) {
+        super(px, py, rnd_color);
+    }
+
     @Override
     public void start() {
         setSpeed(2);
@@ -21,6 +25,6 @@ public class AlienShot extends Shot {
     @Override
     public void Draw(GraphicsContext graphicsContext) {
         super.Draw(graphicsContext);
-        graphicsContext.setFill(Paint.valueOf("#FF0000"));
+        //graphicsContext.setFill(Paint.valueOf("#FF0000"));
     }
 }

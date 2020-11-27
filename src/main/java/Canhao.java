@@ -46,7 +46,7 @@ public class Canhao extends BasicElement implements KeyboardCtrl {
         }
         if (keyCode == KeyCode.SPACE) {
             if (shot_timer <= 0) {
-                Game.getInstance().addChar(new GunShot(getX() + 16, getY() - 32));
+                Game.getInstance().addChar(new GunShot(getX() + 16, getY() - 32, true));
                 shot_timer = RELOAD_TIME;
             }
         }

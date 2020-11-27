@@ -26,4 +26,10 @@ public class Params {
     public boolean coinFlip(){
         return(rnd.nextBoolean());
     }
+
+    public String rnd_hexcolor(){
+        int rnd_number = rnd.nextInt(0xffffff + 1);
+        String colorCode = String.format("#%06x", rnd_number);
+        return colorCode;
+    }
 }

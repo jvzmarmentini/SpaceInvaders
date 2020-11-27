@@ -1,5 +1,7 @@
 // import java.awt.Color;
 
+import java.awt.Color;
+
 import javafx.animation.AnimationTimer;
 import javafx.application.Application;
 import javafx.scene.Group;
@@ -11,6 +13,7 @@ import javafx.scene.input.KeyEvent;
 // import javafx.scene.layout.HBox;
 import javafx.stage.Stage;
 import javafx.scene.image.Image;
+import javafx.scene.paint.Paint;
 
 
 /**
@@ -62,6 +65,7 @@ public class Main extends Application {
                 Game.getInstance().Update(currentNanoTime, deltaTime);
                 gc.drawImage(backgound, 0, 0);
                 //gc.clearRect(0, 0, Params.WINDOW_WIDTH, Params.WINDOW_HEIGHT);
+                gc.setFill(Paint.valueOf("#00FF00")); //seta a para que ela não fique random na pontuação
                 gc.fillText("Pontos: "+Game.getInstance().getPontos(), 10, 10);
                 Game.getInstance().Draw(gc);
                 if (Game.getInstance().isGameOver()){
