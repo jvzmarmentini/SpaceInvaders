@@ -12,6 +12,10 @@ public class GunShot extends Shot {
         super(px, py);
     }
 
+    public GunShot(int px, int py, boolean rnd_color) {
+        super(px, py, rnd_color);
+    }
+
     @Override
     public void start() {
         setSpeed(3);
@@ -21,6 +25,6 @@ public class GunShot extends Shot {
     @Override
     public void Draw(GraphicsContext graphicsContext) {
         super.Draw(graphicsContext);
-        graphicsContext.setFill(Paint.valueOf("#00FFFF"));
+        //graphicsContext.setFill(Paint.valueOf("#00FFFF"));
     }
 }

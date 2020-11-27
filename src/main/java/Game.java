@@ -1,4 +1,5 @@
 import javafx.scene.canvas.GraphicsContext;
+import javafx.scene.paint.Paint;
 import javafx.scene.input.KeyCode;
 import java.util.List;
 import java.util.LinkedList;
@@ -67,11 +68,6 @@ public class Game {
 
         activeChars.add(new InvokerAlien(100, 60));
 
-        // Adiciona pinguim
-        //activeChars.add(new Pinguim(100, 270));
-        // activeChars.add(new Pinguim(10,300));
-
-        //activeChars.add(new AngryBall(150, 250));
 
         for(Character c:activeChars){
             c.start();
