@@ -57,16 +57,18 @@ public class Game {
         activeChars = new LinkedList<>();
 
         // Adiciona o canhao
-        canhao = new Canhao(400,550);
-        activeChars.add(canhao);
+        
 
         // Adiciona bolas
-        // for(int i=0; i<5; i++){
-        //     activeChars.add(new AngryAlien(100+(i*60),60));
-        // }
+        for(int i=0; i<1; i++){
+            activeChars.add(new AngryAlien(100+(i*60),60));
+        }
+
+        canhao = new Canhao(400,550);
+        activeChars.add(canhao);
         // activeChars.add(new DrunkAlien(100, 60));
 
-        activeChars.add(new InvokerAlien(100, 60));
+        // activeChars.add(new InvokerAlien(100, 60));
 
 
         for(Character c:activeChars){
@@ -87,6 +89,7 @@ public class Game {
                 //FIXME: make these ifs prettier
                 if (este instanceof AlienShot) {
                     if (outro instanceof Canhao) {
+                        System.out.println("err");
                         este.testaColisao(outro);
                         outro.testaColisao(este);
                     }
