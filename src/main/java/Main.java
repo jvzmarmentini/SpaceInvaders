@@ -10,6 +10,8 @@ import javafx.scene.canvas.GraphicsContext;
 import javafx.scene.input.KeyEvent;
 // import javafx.scene.layout.HBox;
 import javafx.stage.Stage;
+import javafx.scene.image.Image;
+
 
 /**
  * Handles window initialization and primary game setup
@@ -19,6 +21,8 @@ import javafx.stage.Stage;
 public class Main extends Application {
     @Override
     public void start(Stage stage) throws Exception {
+
+        Image backgound = new Image("background.png",Params.WINDOW_WIDTH,Params.WINDOW_HEIGHT,false,true);
         // Initialize Window
         stage.setTitle(Params.WINDOW_TITLE);
         stage.setResizable(false);
@@ -56,7 +60,8 @@ public class Main extends Application {
                 long deltaTime = currentNanoTime - lastNanoTime;
 
                 Game.getInstance().Update(currentNanoTime, deltaTime);
-                gc.clearRect(0, 0, Params.WINDOW_WIDTH, Params.WINDOW_HEIGHT);
+                gc.drawImage(backgound, 0, 0);
+                //gc.clearRect(0, 0, Params.WINDOW_WIDTH, Params.WINDOW_HEIGHT);
                 gc.fillText("Pontos: "+Game.getInstance().getPontos(), 10, 10);
                 Game.getInstance().Draw(gc);
                 if (Game.getInstance().isGameOver()){
