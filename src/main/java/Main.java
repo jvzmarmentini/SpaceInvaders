@@ -69,6 +69,7 @@ public class Main extends Application {
                 gc.fillText("Pontos: "+Game.getInstance().getPontos(), 10, 10);
                 Game.getInstance().Draw(gc);
                 if (Game.getInstance().isGameOver()){
+                    Game.getInstance().salvaPontos();
                     stop();
                 }
 

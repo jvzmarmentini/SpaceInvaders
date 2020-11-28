@@ -31,7 +31,7 @@ public class Canhao extends BasicElement implements KeyboardCtrl {
             if (jaColidiu()) {
                 lifes--;
                 super.setColidiu(false);
-                System.out.println(lifes);
+                //System.out.println(lifes);
             }
         } else
             Game.getInstance().setGameOver();

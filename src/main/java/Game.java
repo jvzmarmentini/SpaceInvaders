@@ -1,8 +1,8 @@
 import javafx.scene.canvas.GraphicsContext;
 import javafx.scene.paint.Paint;
 import javafx.scene.input.KeyCode;
-import java.util.List;
-import java.util.LinkedList;
+import java.util.*;
+import java.io.*;
 
 /**
  * Handles the game lifecycle and behavior
@@ -36,6 +36,48 @@ public class Game {
         pontos++;
     }
 
+    public void salvaPontos(){
+        try {
+            // Conteudo
+            String pontos = String.valueOf(this.getPontos());
+            ArrayList<String> pontosArquivo = new ArrayList<String>();
+
+            File file = new File("points.txt");
+
+            if (!file.exists()) {
+                file.createNewFile();
+            }
+
+            FileWriter fw = new FileWriter(file.getAbsoluteFile());
+            BufferedWriter bw = new BufferedWriter(fw);
+            
+            
+            // Le o arquivo e guarda as pontuações que estão nele.
+            FileReader ler = new FileReader("points.txt");
+            BufferedReader reader = new BufferedReader(ler);
+
+            String linha;
+            while( (linha = reader.readLine()) != null ){
+                pontosArquivo.add(linha);    
+            }
+
+            pontosArquivo.add(pontos);
+
+            Collections.sort(pontosArquivo); //Ordena a pontuação
+            for (int i = 0; i < pontosArquivo.size(); i++){ //Salva pontuação no arquivo novamente
+                bw.write(pontosArquivo.get(i));
+                bw.newLine();
+            }
+            
+
+            reader.close();
+            bw.close();
+
+        } catch(IOException e){
+            e.printStackTrace();
+        } 
+    } 
+
     public static Game getInstance(){
         if (game == null){
             game = new Game();
@@ -60,7 +102,7 @@ public class Game {
         canhao = new Canhao(400,550);
 
 
-        for(int i=0; i<1; i++){
+        for(int i=0; i<20; i++){
             activeChars.add(new AngryAlien(100+(i*60),60));
         }
 
@@ -89,7 +131,7 @@ public class Game {
                 //FIXME: make these ifs prettier
                 if (este instanceof AlienShot) {
                     if (outro instanceof Canhao) {
-                        System.out.println("err");
+                        //System.out.println("err");
                         este.testaColisao(outro);
                         outro.testaColisao(este);
                     }
