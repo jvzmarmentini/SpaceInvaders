@@ -10,3 +10,4 @@ TODO list:
  - [] implementar arquivo
  - [] melhor UX
  - [] implementar lambda
+ 
