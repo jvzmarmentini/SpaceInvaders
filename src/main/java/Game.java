@@ -14,6 +14,8 @@ public class Game {
     private List<Character> activeChars;
     private boolean gameOver;
     private int pontos;
+    private ArrayList<String> highscoreAux;
+    private String playerName;
 
     private Game(){
         gameOver = false;
@@ -36,6 +38,14 @@ public class Game {
         pontos++;
     }
 
+    public String getHighScore(){
+        String aux = "";
+        for(int i = 0; i < 11; i++) {
+            aux += highscoreAux.get(i) + "\n";
+        }        
+        return aux;
+    }
+
     public void salvaPontos(){
         try {
             // Conteudo
@@ -44,34 +54,42 @@ public class Game {
 
             File file = new File("points.txt");
 
-            if (!file.exists()) {
-                file.createNewFile();
+
+            if (file.exists()) {
+                FileReader ler = new FileReader("points.txt");
+                BufferedReader reader = new BufferedReader(ler);
+                
+                // Le o arquivo e guarda as pontuações que estão nele na lista.
+
+                String linha;
+                while( (linha = reader.readLine()) != null ){
+                    System.out.println(linha);
+                    pontosArquivo.add(linha);    
+                }
+                reader.close();
             }
+
+            pontosArquivo.add(pontos); //Adiona a pontução atual na lista
+
+            Collections.sort(pontosArquivo); //Ordena a pontuação salva
+            Collections.reverse(pontosArquivo); //Inverte para ficar do maior ao menor
+            file = new File("points.txt");
 
             FileWriter fw = new FileWriter(file.getAbsoluteFile());
             BufferedWriter bw = new BufferedWriter(fw);
-            
-            
-            // Le o arquivo e guarda as pontuações que estão nele.
-            FileReader ler = new FileReader("points.txt");
-            BufferedReader reader = new BufferedReader(ler);
 
-            String linha;
-            while( (linha = reader.readLine()) != null ){
-                pontosArquivo.add(linha);    
-            }
+            //System.out.println(pontosArquivo.toString());
 
-            pontosArquivo.add(pontos);
-
-            Collections.sort(pontosArquivo); //Ordena a pontuação
-            for (int i = 0; i < pontosArquivo.size(); i++){ //Salva pontuação no arquivo novamente
-                bw.write(pontosArquivo.get(i));
+            for (int i = 0; i < pontosArquivo.size(); i++){ //Grava pontuação já ordenada no arquivo novamente
+                //System.out.println(pontosArquivo.get(i));
+                bw.write(pontosArquivo.get(i) + "\n");
                 bw.newLine();
             }
             
 
-            reader.close();
             bw.close();
+
+            highscoreAux = pontosArquivo;
 
         } catch(IOException e){
             e.printStackTrace();
