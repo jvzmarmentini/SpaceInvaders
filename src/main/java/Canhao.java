@@ -36,11 +36,12 @@ public class Canhao extends BasicElement implements KeyboardCtrl {
         } else
             Game.getInstance().setGameOver();
         
-        if(getX() >= Params.WINDOW_WIDTH || getX() <= 0){
+        if(getX() >= Params.WINDOW_WIDTH -46 || getX() <= 0){
             if(getX() <= 0){
                 setPosX(1);
-            }else
-                setPosX(Params.WINDOW_WIDTH);
+            }else if(getX() >= Params.WINDOW_WIDTH - 46){
+                setPosX(Params.WINDOW_WIDTH - 46);
+            }
         }
         setPosX(getX() + getDirH() * getSpeed());
         if (shot_timer > 0)
