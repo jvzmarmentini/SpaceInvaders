@@ -24,6 +24,10 @@ public class Canhao extends BasicElement implements KeyboardCtrl {
         setLimV(Params.WINDOW_HEIGHT - 100, Params.WINDOW_HEIGHT);
     }
 
+    public void die(){
+        this.lifes = 0;
+    }
+
     @Override
     public void Update(long deltaTime) {
         //FIXME: por algum motivo, a colisão é testada duas vezes. ai tem que colocar o dobro de vida

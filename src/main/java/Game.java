@@ -155,12 +155,26 @@ public class Game {
                         outro.testaColisao(este);
                     }
                 }
+                if(este instanceof Alien){
+                    if(outro instanceof Canhao){
+                        este.testaColisao(outro);
+                        outro.testaColisao(este);
+                        if(outro.jaColidiu())
+                            ((Canhao) outro).die();
+                    }
+                }
                 if (este instanceof GunShot) {
                     if (outro instanceof Alien) {
                         este.testaColisao(outro);
                         outro.testaColisao(este);
                     }
                 }
+                //FIXME: Jogo encerra do nada neste if, não identifiquei o motivo.                
+/*                 if(este instanceof Alien){
+                    if(este.getY() >= Params.WINDOW_HEIGHT -30){
+                        Game.getInstance().setGameOver();
+                    }   
+                } */
             }
         }
     }
