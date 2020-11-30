@@ -6,7 +6,7 @@ TODO list:
  - [x] achar uma alterantiva para os disparos dos aliens raivosos não matarem os outros aliens
  - [] fazer menu
  - [] implementar fases
- - [] melhor e simplificar colisoes
- - [] implementar arquivo
+ - [x] melhor e simplificar colisoes
+ - [x] implementar arquivo
  - [] melhor UX
  - [] implementar lambda
