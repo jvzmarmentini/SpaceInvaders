@@ -1,8 +1,8 @@
 import javafx.scene.canvas.GraphicsContext;
 import javafx.scene.paint.Paint;
 import javafx.scene.input.KeyCode;
-import java.util.List;
-import java.util.LinkedList;
+import java.util.*;
+import java.io.*;
 
 /**
  * Handles the game lifecycle and behavior
@@ -14,6 +14,8 @@ public class Game {
     private List<Character> activeChars;
     private boolean gameOver;
     private int pontos;
+    private ArrayList<String> highscoreAux;
+    private String playerName;
 
     private Game(){
         gameOver = false;
@@ -35,6 +37,64 @@ public class Game {
     public void incPontos(){
         pontos++;
     }
+
+    public String getHighScore(){
+        String aux = "";
+        for(int i = 0; i < 11; i++) {
+            aux += highscoreAux.get(i) + "\n";
+        }        
+        return aux;
+    }
+
+    public void salvaPontos(){
+        try {
+            // Conteudo
+            String pontos = String.valueOf(this.getPontos());
+            ArrayList<String> pontosArquivo = new ArrayList<String>();
+
+            File file = new File("points.txt");
+
+
+            if (file.exists()) {
+                FileReader ler = new FileReader("points.txt");
+                BufferedReader reader = new BufferedReader(ler);
+                
+                // Le o arquivo e guarda as pontuações que estão nele na lista.
+
+                String linha;
+                while( (linha = reader.readLine()) != null ){
+                    System.out.println(linha);
+                    pontosArquivo.add(linha);    
+                }
+                reader.close();
+            }
+
+            pontosArquivo.add(pontos); //Adiona a pontução atual na lista
+
+            Collections.sort(pontosArquivo); //Ordena a pontuação salva
+            Collections.reverse(pontosArquivo); //Inverte para ficar do maior ao menor
+            file = new File("points.txt");
+
+            FileWriter fw = new FileWriter(file.getAbsoluteFile());
+            BufferedWriter bw = new BufferedWriter(fw);
+
+            //System.out.println(pontosArquivo.toString());
+
+            for (int i = 0; i < pontosArquivo.size(); i++){ //Grava pontuação já ordenada no arquivo novamente
+                //System.out.println(pontosArquivo.get(i));
+                bw.write(pontosArquivo.get(i) + "\n");
+                bw.newLine();
+            }
+            
+
+            bw.close();
+
+            highscoreAux = pontosArquivo;
+
+        } catch(IOException e){
+            e.printStackTrace();
+        } 
+    } 
 
     public static Game getInstance(){
         if (game == null){
@@ -60,7 +120,7 @@ public class Game {
         canhao = new Canhao(400,550);
 
 
-        for(int i=0; i<1; i++){
+        for(int i=0; i<20; i++){
             activeChars.add(new AngryAlien(100+(i*60),60));
         }
 
@@ -89,7 +149,7 @@ public class Game {
                 //FIXME: make these ifs prettier
                 if (este instanceof AlienShot) {
                     if (outro instanceof Canhao) {
-                        System.out.println("err");
+                        //System.out.println("err");
                         este.testaColisao(outro);
                         outro.testaColisao(este);
                     }

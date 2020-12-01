@@ -8,12 +8,13 @@ import javafx.scene.Group;
 import javafx.scene.Scene;
 import javafx.scene.canvas.Canvas;
 import javafx.scene.canvas.GraphicsContext;
-// import javafx.scene.control.Label;
+import javafx.scene.control.Label;
 import javafx.scene.input.KeyEvent;
 // import javafx.scene.layout.HBox;
 import javafx.stage.Stage;
 import javafx.scene.image.Image;
 import javafx.scene.paint.Paint;
+import java.util.Scanner;
 
 
 /**
@@ -36,6 +37,8 @@ public class Main extends Application {
 
         Canvas canvas = new Canvas(Params.WINDOW_WIDTH, Params.WINDOW_HEIGHT );
 
+        Label name = new Label("Nome: ");
+        root.getChildren().add(name);
         root.getChildren().add( canvas );
 
         // Setup Game object
@@ -69,6 +72,8 @@ public class Main extends Application {
                 gc.fillText("Pontos: "+Game.getInstance().getPontos(), 10, 10);
                 Game.getInstance().Draw(gc);
                 if (Game.getInstance().isGameOver()){
+                    Game.getInstance().salvaPontos();
+                    gc.fillText("\nHighScores: \n" + Game.getInstance().getHighScore(), 10, 10);
                     stop();
                 }
 
