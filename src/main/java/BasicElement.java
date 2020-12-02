@@ -6,8 +6,8 @@ import javafx.scene.canvas.GraphicsContext;
  */
 public abstract class BasicElement implements Character{
     int direction_horizontal = 0, direction_vertical = 0;
-    int lminV = 0, lmaxV = Params.WINDOW_HEIGHT;
-    int lminH = 0, lmaxH = Params.WINDOW_WIDTH;
+    int lminV = 0, lmaxV = Params.WINDOW_HEIGHT -30;
+    int lminH = 0, lmaxH = Params.WINDOW_WIDTH -30;
     int largura = 32, altura = 32;
     boolean colidiu = false;
     boolean active = true;

@@ -24,6 +24,10 @@ public class Canhao extends BasicElement implements KeyboardCtrl {
         setLimV(Params.WINDOW_HEIGHT - 100, Params.WINDOW_HEIGHT);
     }
 
+    public void die(){
+        this.lifes = 0;
+    }
+
     @Override
     public void Update(long deltaTime) {
         //FIXME: por algum motivo, a colisão é testada duas vezes. ai tem que colocar o dobro de vida
@@ -34,7 +38,14 @@ public class Canhao extends BasicElement implements KeyboardCtrl {
             }
         } else
             Game.getInstance().setGameOver();
-
+        
+        if(getX() >= Params.WINDOW_WIDTH -46 || getX() <= 0){
+            if(getX() <= 0){
+                setPosX(1);
+            }else if(getX() >= Params.WINDOW_WIDTH - 46){
+                setPosX(Params.WINDOW_WIDTH - 46);
+            }
+        }
         setPosX(getX() + getDirH() * getSpeed());
         if (shot_timer > 0)
             shot_timer -= deltaTime;
