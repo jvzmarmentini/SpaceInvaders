@@ -112,7 +112,7 @@ public class Main extends Application {
                 Game.getInstance().Draw(gc);
                 if (Game.getInstance().isGameOver()) {
                     Game.getInstance().salvaPontos();
-                    gc.fillText("\nHighScores: \n" + Game.getInstance().getHighScore(), 10, 10);
+                    gc.fillText("\n\nHighScores: \n" + Game.getInstance().getHighScore(), 10, 10);
                     stop();
                 }
 
