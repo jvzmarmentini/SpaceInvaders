@@ -15,7 +15,7 @@ public class Game {
     private boolean gameOver;
     private int pontos;
     private ArrayList<String> highscoreAux;
-    private String playerName;
+    // private String playerName;
 
     private Game(){
         gameOver = false;
@@ -146,10 +146,8 @@ public class Game {
             este.Update(deltaTime);
             for(int j =0; j<activeChars.size();j++){
                 Character outro = activeChars.get(j);
-                //FIXME: make these ifs prettier
-                if (este instanceof AlienShot) {
+                if (este instanceof AlienShot || este instanceof Alien) {
                     if (outro instanceof Canhao) {
-                        //System.out.println("err");
                         este.testaColisao(outro);
                         outro.testaColisao(este);
                     }
