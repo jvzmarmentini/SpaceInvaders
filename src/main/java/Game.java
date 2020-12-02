@@ -6,47 +6,50 @@ import java.io.*;
 
 /**
  * Handles the game lifecycle and behavior
+ * 
  * @author Gabriel Panho, Gabriel Verdi e João Marmentini
  */
 public class Game {
     private static Game game = null;
     private Canhao canhao;
     private List<Character> activeChars;
+    private Level level;
     private boolean gameOver;
     private int pontos;
+    private boolean hasEnemies;
     private ArrayList<String> highscoreAux;
     // private String playerName;
 
-    private Game(){
+    private Game() {
         gameOver = false;
         pontos = 0;
     }
 
-    public void setGameOver(){
+    public void setGameOver() {
         gameOver = true;
     }
 
-    public boolean isGameOver(){
+    public boolean isGameOver() {
         return gameOver;
     }
 
-    public int getPontos(){
+    public int getPontos() {
         return pontos;
     }
 
-    public void incPontos(){
+    public void incPontos() {
         pontos++;
     }
 
-    public String getHighScore(){
+    public String getHighScore() {
         String aux = "";
-        for(int i = 0; i < 11; i++) {
+        for (int i = 0; i < 11; i++) {
             aux += highscoreAux.get(i) + "\n";
-        }        
+        }
         return aux;
     }
 
-    public void salvaPontos(){
+    public void salvaPontos() {
         try {
             // Conteudo
             String pontos = String.valueOf(this.getPontos());
@@ -54,61 +57,59 @@ public class Game {
 
             File file = new File("points.txt");
 
-
             if (file.exists()) {
                 FileReader ler = new FileReader("points.txt");
                 BufferedReader reader = new BufferedReader(ler);
-                
+
                 // Le o arquivo e guarda as pontuações que estão nele na lista.
 
                 String linha;
-                while( (linha = reader.readLine()) != null ){
+                while ((linha = reader.readLine()) != null) {
                     System.out.println(linha);
-                    pontosArquivo.add(linha);    
+                    pontosArquivo.add(linha);
                 }
                 reader.close();
             }
 
-            pontosArquivo.add(pontos); //Adiona a pontução atual na lista
+            pontosArquivo.add(pontos); // Adiona a pontução atual na lista
 
-            Collections.sort(pontosArquivo); //Ordena a pontuação salva
-            Collections.reverse(pontosArquivo); //Inverte para ficar do maior ao menor
+            Collections.sort(pontosArquivo); // Ordena a pontuação salva
+            Collections.reverse(pontosArquivo); // Inverte para ficar do maior ao menor
             file = new File("points.txt");
 
             FileWriter fw = new FileWriter(file.getAbsoluteFile());
             BufferedWriter bw = new BufferedWriter(fw);
 
-            //System.out.println(pontosArquivo.toString());
+            // System.out.println(pontosArquivo.toString());
 
-            for (int i = 0; i < pontosArquivo.size(); i++){ //Grava pontuação já ordenada no arquivo novamente
-                //System.out.println(pontosArquivo.get(i));
+            for (int i = 0; i < pontosArquivo.size(); i++) { // Grava pontuação já ordenada no arquivo novamente
+                // System.out.println(pontosArquivo.get(i));
                 bw.write(pontosArquivo.get(i) + "\n");
                 bw.newLine();
             }
-            
 
             bw.close();
 
             highscoreAux = pontosArquivo;
 
-        } catch(IOException e){
+        } catch (IOException e) {
             e.printStackTrace();
-        } 
-    } 
-
-    public static Game getInstance(){
-        if (game == null){
-            game = new Game();
         }
-        return(game);
     }
 
-    public void addChar(Character c){
+    public static Game getInstance() {
+        if (game == null) {
+            game = new Game();
+        }
+        return (game);
+    }
+
+    public void addChar(Character c) {
         activeChars.add(c);
         c.start();
     }
 
-    public void eliminate(Character c){
+    public void eliminate(Character c) {
         activeChars.remove(c);
     }
 
@@ -116,35 +117,46 @@ public class Game {
         // Repositório de personagens
         activeChars = new LinkedList<>();
 
+        // Fases
+        level = new Level();
+
         // Adiciona o canhao
-        canhao = new Canhao(400,550);
-
-
-        for(int i=0; i<20; i++){
-            activeChars.add(new AngryAlien(100+(i*60),60));
-        }
+        canhao = new Canhao(400, 550);
 
         activeChars.add(canhao);
-        
-        activeChars.add(new DrunkAlien(100, 60));
-
-        activeChars.add(new InvokerAlien(100, 60));
-
-
-        for(Character c:activeChars){
-            c.start();
-        }
     }
 
+    public void Run() {
+        level.nextLevel();
+        activeChars.addAll(level.getEnemies());
+        for (Character c : activeChars) {
+            c.start();
+        }
+	}
+
     public void Update(long currentTime, long deltaTime) {
-        if(gameOver){
+        // System.out.println(activeChars.size());
+        if (level.getFaseNumber() == 10) 
+            setGameOver();
+        else {
+            boolean hasEnemies = false;
+            for (Character character : activeChars) {
+                if (character instanceof Alien) {
+                    hasEnemies = true;
+                }
+            }
+            if (!hasEnemies) {
+                Run();
+            }
+        }
+        if (gameOver) {
             return;
         }
 
-        for(int i=0;i<activeChars.size();i++){
+        for (int i = 0; i < activeChars.size(); i++) {
             Character este = activeChars.get(i);
             este.Update(deltaTime);
-            for(int j =0; j<activeChars.size();j++){
+            for (int j = 0; j < activeChars.size(); j++) {
                 Character outro = activeChars.get(j);
                 if (este instanceof AlienShot || este instanceof Alien) {
                     if (outro instanceof Canhao) {
@@ -162,13 +174,15 @@ public class Game {
         }
     }
 
-
     public void OnInput(KeyCode keyCode, boolean isPressed) {
         canhao.OnInput(keyCode, isPressed);
+        if (keyCode == KeyCode.U){
+                
+        }
     }
 
     public void Draw(GraphicsContext graphicsContext) {
-        for(Character c:activeChars){
+        for (Character c : activeChars) {
             c.Draw(graphicsContext);
         }
     }

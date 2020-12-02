@@ -4,9 +4,9 @@ TODO list:
  - [x] corrigir cor do disparo (ta zoado)
  - [x] achar uma alternativa para os aliens não se matarem quando colidirem.
  - [x] achar uma alterantiva para os disparos dos aliens raivosos não matarem os outros aliens
- - [] fazer menu
+ - [x] fazer menu
  - [] implementar fases
  - [x] melhor e simplificar colisoes
  - [x] implementar arquivo
- - [] melhor UX
- - [] implementar lambda
+ - [x] melhor UX
+ - [x] implementar lambda

@@ -83,6 +83,7 @@ public class Main extends Application {
 
         // Setup Game object
         Game.getInstance().Start();
+        Game.getInstance().Run();
 
         // Register User Input Handler
         scene.setOnKeyPressed((KeyEvent event) -> {
@@ -105,7 +106,6 @@ public class Main extends Application {
 
                 Game.getInstance().Update(currentNanoTime, deltaTime);
                 gc.drawImage(backgound, 0, 0);
-                // gc.clearRect(0, 0, Params.WINDOW_WIDTH, Params.WINDOW_HEIGHT);
                 gc.setFill(Paint.valueOf("#00FF00")); // seta a para que ela não fique random na pontuação
                 gc.fillText("Pontos: " + Game.getInstance().getPontos(), 10, 10);
                 Game.getInstance().Draw(gc);
