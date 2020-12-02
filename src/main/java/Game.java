@@ -68,7 +68,6 @@ public class Game {
 
                 String linha;
                 while ((linha = reader.readLine()) != null) {
-                    System.out.println(linha);
                     pontosArquivo.add(linha);
                 }
                 reader.close();
