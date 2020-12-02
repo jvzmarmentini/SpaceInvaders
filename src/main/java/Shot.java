@@ -28,7 +28,7 @@ public abstract class Shot extends BasicElement {
             deactivate();
         } else {
             setPosY(getY() + getDirV() * getSpeed());
-            if (getY() <= getLMinV()) {
+            if (getY() <= getLMinV() || getLMaxV() <= getY()) {
                 deactivate();
             }
         }
