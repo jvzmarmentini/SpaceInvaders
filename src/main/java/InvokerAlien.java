@@ -1,3 +1,7 @@
+/**
+ * @author Gabriel Panho, Gabriel Verdi e João Marmentini
+ */
+
 public class InvokerAlien extends Alien {
     private final static int DRINK_POTION_TIME = 1000000000;
     private int mana = 1000000000;
