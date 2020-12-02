@@ -1,9 +1,9 @@
 public class InvokerAlien extends Alien {
     private final static int DRINK_POTION_TIME = 1000000000;
-    private int mana = 0;
+    private int mana = 1000000000;
 
     public InvokerAlien(int px, int py) {
-        super(px, py, "alien2.png");
+        super(px, py, "invokerAlien.png");
     }
 
     @Override

@@ -1,7 +1,7 @@
 import javafx.scene.canvas.GraphicsContext;
-import javafx.scene.paint.Paint;
 import javafx.scene.input.KeyCode;
 import java.util.*;
+
 import java.io.*;
 
 /**
@@ -16,7 +16,6 @@ public class Game {
     private Level level;
     private boolean gameOver;
     private int pontos;
-    private boolean hasEnemies;
     private ArrayList<String> highscoreAux;
     // private String playerName;
 
@@ -49,6 +48,10 @@ public class Game {
         return aux;
     }
 
+    public String getFase() {
+        return "" + level.getFaseNumber();
+    }
+
     public void salvaPontos() {
         try {
             // Conteudo
@@ -65,7 +68,6 @@ public class Game {
 
                 String linha;
                 while ((linha = reader.readLine()) != null) {
-                    System.out.println(linha);
                     pontosArquivo.add(linha);
                 }
                 reader.close();
@@ -132,11 +134,11 @@ public class Game {
         for (Character c : activeChars) {
             c.start();
         }
-	}
+    }
 
     public void Update(long currentTime, long deltaTime) {
         // System.out.println(activeChars.size());
-        if (level.getFaseNumber() == 10) 
+        if (level.getFaseNumber() == 10)
             setGameOver();
         else {
             boolean hasEnemies = false;
@@ -164,11 +166,11 @@ public class Game {
                         outro.testaColisao(este);
                     }
                 }
-                if(este instanceof Alien){
-                    if(outro instanceof Canhao){
+                if (este instanceof Alien) {
+                    if (outro instanceof Canhao) {
                         este.testaColisao(outro);
                         outro.testaColisao(este);
-                        if(outro.jaColidiu())
+                        if (outro.jaColidiu())
                             ((Canhao) outro).die();
                     }
                 }
@@ -178,21 +180,18 @@ public class Game {
                         outro.testaColisao(este);
                     }
                 }
-                //FIXME: Jogo encerra do nada neste if, não identifiquei o motivo.                
-/*                 if(este instanceof Alien){
-                    if(este.getY() >= Params.WINDOW_HEIGHT -30){
+                // FIXME: Jogo encerra do nada neste if, não identifiquei o motivo.
+                if (este instanceof DrunkAlien) {
+                    if (este.getY() >= Params.WINDOW_HEIGHT - 30) {
                         Game.getInstance().setGameOver();
-                    }   
-                } */
+                    }
+                }
             }
         }
     }
 
     public void OnInput(KeyCode keyCode, boolean isPressed) {
         canhao.OnInput(keyCode, isPressed);
-        if (keyCode == KeyCode.U){
-                
-        }
     }
 
     public void Draw(GraphicsContext graphicsContext) {

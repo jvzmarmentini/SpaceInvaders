@@ -35,7 +35,6 @@ public class Canhao extends BasicElement implements KeyboardCtrl {
             if (jaColidiu()) {
                 lifes--;
                 super.setColidiu(false);
-                //System.out.println(lifes);
             }
         } else
             Game.getInstance().setGameOver();
@@ -79,11 +78,5 @@ public class Canhao extends BasicElement implements KeyboardCtrl {
     @Override
     public void Draw(GraphicsContext graphicsContext) {
         graphicsContext.drawImage(image, getX(), getY());
-
-        /*
-         * graphicsContext.setFill(Paint.valueOf("#FF0000"));
-         * graphicsContext.fillRect(getX(), getY() + 16, 32, 32);
-         * graphicsContext.fillRect(getX() + 8, getY() - 16, 16, 48);
-         */
     }
 }
