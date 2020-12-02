@@ -7,7 +7,7 @@ public class AngryAlien extends Alien {
     private int shot_timer = 0;
 
     public AngryAlien(int px, int py) {
-        super(px, py, "alien.png");
+        super(px, py, "angryAlien.png");
     }
 
     @Override

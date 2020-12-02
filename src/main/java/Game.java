@@ -1,7 +1,7 @@
 import javafx.scene.canvas.GraphicsContext;
-import javafx.scene.paint.Paint;
 import javafx.scene.input.KeyCode;
 import java.util.*;
+
 import java.io.*;
 
 /**
@@ -16,7 +16,6 @@ public class Game {
     private Level level;
     private boolean gameOver;
     private int pontos;
-    private boolean hasEnemies;
     private ArrayList<String> highscoreAux;
     // private String playerName;
 
@@ -47,6 +46,10 @@ public class Game {
             aux += highscoreAux.get(i) + "\n";
         }
         return aux;
+    }
+
+    public String getFase(){
+        return "" + level.getFaseNumber();
     }
 
     public void salvaPontos() {
@@ -132,7 +135,7 @@ public class Game {
         for (Character c : activeChars) {
             c.start();
         }
-	}
+    }
 
     public void Update(long currentTime, long deltaTime) {
         // System.out.println(activeChars.size());
@@ -176,9 +179,6 @@ public class Game {
 
     public void OnInput(KeyCode keyCode, boolean isPressed) {
         canhao.OnInput(keyCode, isPressed);
-        if (keyCode == KeyCode.U){
-                
-        }
     }
 
     public void Draw(GraphicsContext graphicsContext) {

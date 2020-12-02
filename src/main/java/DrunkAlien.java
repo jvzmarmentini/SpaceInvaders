@@ -8,7 +8,7 @@ public class DrunkAlien extends Alien {
     private int stamina = 0;
 
     public DrunkAlien(int px, int py) {
-        super(px, py, "alien.png");
+        super(px, py, "drunkAlien.png");
     }
 
     @Override
@@ -21,9 +21,10 @@ public class DrunkAlien extends Alien {
             if (stamina > 0)
                 stamina -= deltaTime / 2;
             else {
-                if (Params.getInstance().nextInt(3) == 0)
+                if (Params.getInstance().nextInt(3) == 0) {
                     setDirH(getDirH() * -1);
                     setSpeed(Params.getInstance().nextInt(3) + 1);
+                }
                 stamina = REST_TIME;
             }
             if (getX() >= getLMaxH() || getX() < getLMinH()) {

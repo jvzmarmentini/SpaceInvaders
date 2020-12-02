@@ -6,7 +6,7 @@ public class HardAlien extends Alien {
     private int shields = 2;
 
     public HardAlien(int px, int py) {
-        super(px, py, "alien2.png");
+        super(px, py, "hardAlien.png");
         setSpeed(1);
     }
 

@@ -108,6 +108,7 @@ public class Main extends Application {
                 gc.drawImage(backgound, 0, 0);
                 gc.setFill(Paint.valueOf("#00FF00")); // seta a para que ela não fique random na pontuação
                 gc.fillText("Pontos: " + Game.getInstance().getPontos(), 10, 10);
+                gc.fillText("Fase: " + Game.getInstance().getFase(), Params.WINDOW_WIDTH/2, 10);
                 Game.getInstance().Draw(gc);
                 if (Game.getInstance().isGameOver()) {
                     Game.getInstance().salvaPontos();
