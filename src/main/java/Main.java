@@ -53,7 +53,7 @@ public class Main extends Application {
         Button btnStart = new Button();
         Button btnStop = new Button();
 
-        btnStart.setText("Space Invaders");
+        btnStart.setText("Start!");
         btnStart.setOnAction((ActionEvent event) -> {
             cleanScreen(gridPane);
             starGame(gridPane, canvas, scene);

@@ -48,7 +48,7 @@ public class Game {
         return aux;
     }
 
-    public String getFase(){
+    public String getFase() {
         return "" + level.getFaseNumber();
     }
 
@@ -139,7 +139,7 @@ public class Game {
 
     public void Update(long currentTime, long deltaTime) {
         // System.out.println(activeChars.size());
-        if (level.getFaseNumber() == 10) 
+        if (level.getFaseNumber() == 10)
             setGameOver();
         else {
             boolean hasEnemies = false;
@@ -167,11 +167,11 @@ public class Game {
                         outro.testaColisao(este);
                     }
                 }
-                if(este instanceof Alien){
-                    if(outro instanceof Canhao){
+                if (este instanceof Alien) {
+                    if (outro instanceof Canhao) {
                         este.testaColisao(outro);
                         outro.testaColisao(este);
-                        if(outro.jaColidiu())
+                        if (outro.jaColidiu())
                             ((Canhao) outro).die();
                     }
                 }
@@ -181,12 +181,12 @@ public class Game {
                         outro.testaColisao(este);
                     }
                 }
-                //FIXME: Jogo encerra do nada neste if, não identifiquei o motivo.                
-/*                 if(este instanceof Alien){
-                    if(este.getY() >= Params.WINDOW_HEIGHT -30){
+                // FIXME: Jogo encerra do nada neste if, não identifiquei o motivo.
+                if (este instanceof DrunkAlien) {
+                    if (este.getY() >= Params.WINDOW_HEIGHT - 30) {
                         Game.getInstance().setGameOver();
-                    }   
-                } */
+                    }
+                }
             }
         }
     }
