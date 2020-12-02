@@ -40,7 +40,7 @@ public class Game {
 
     public String getHighScore(){
         String aux = "";
-        for(int i = 0; i < 11; i++) {
+        for(int i = 0; i < 10; i++) {
             aux += highscoreAux.get(i) + "\n";
         }        
         return aux;
@@ -119,16 +119,17 @@ public class Game {
         // Adiciona o canhao
         canhao = new Canhao(400,550);
 
-
+/* 
         for(int i=0; i<20; i++){
             activeChars.add(new AngryAlien(100+(i*60),60));
         }
-
+ */
         activeChars.add(canhao);
         
-        activeChars.add(new DrunkAlien(100, 60));
-
-        activeChars.add(new InvokerAlien(100, 60));
+        for(int i=0; i<20; i++){
+            activeChars.add(new DrunkAlien(100+(i*60),60));
+        }
+        //activeChars.add(new InvokerAlien(100, 60));
 
 
         for(Character c:activeChars){
@@ -154,12 +155,26 @@ public class Game {
                         outro.testaColisao(este);
                     }
                 }
+                if(este instanceof Alien){
+                    if(outro instanceof Canhao){
+                        este.testaColisao(outro);
+                        outro.testaColisao(este);
+                        if(outro.jaColidiu())
+                            ((Canhao) outro).die();
+                    }
+                }
                 if (este instanceof GunShot) {
                     if (outro instanceof Alien) {
                         este.testaColisao(outro);
                         outro.testaColisao(este);
                     }
                 }
+                //FIXME: Jogo encerra do nada neste if, não identifiquei o motivo.                
+/*                 if(este instanceof Alien){
+                    if(este.getY() >= Params.WINDOW_HEIGHT -30){
+                        Game.getInstance().setGameOver();
+                    }   
+                } */
             }
         }
     }
