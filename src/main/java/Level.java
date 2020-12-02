@@ -1,5 +1,9 @@
 import java.util.LinkedList;
 
+/**
+ * @author Gabriel Panho, Gabriel Verdi e João Marmentini
+ */
+
 public class Level {
     private int level;
     private LinkedList<Alien> enemies;
